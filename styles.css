@@ -10,15 +10,32 @@
   padding: 0;
   box-sizing: border-box;
 }
+html {
+  font-size: 93.75%; /*15px*/
+}
 
 body {
   background: #f0f2f5;
   font-family: "Poppins", sans-serif;
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .container {
   width: min (90vw, 800px);
   margin: auto;
 }
+
 /* Titles ======================== */
 h2 {
   margin-top: 3.2rem;
@@ -26,6 +43,20 @@ h2 {
   color: var(--dark-blue);
   font-weight: normal;
 }
+/* Links & Buttons ======================== */
+a {
+  color: #49aa26;
+  text-decoration: none;
+}
+a:hover {
+  color: #3dd703;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
 /* Header ======================== */
 header {
   background: #2d4a22;
@@ -40,7 +71,7 @@ header {
 
 /* Balance ======================== */
 #balance {
-  margin-top: -8rem;
+  margin: -1rem 14px;
 }
 
 #balance h2 {
@@ -58,6 +89,10 @@ header {
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
@@ -69,7 +104,14 @@ header {
   background: #49aa26;
   color: white;
 }
+
 /* Table ======================== */
+#transaction {
+  display: block;
+  width: 100%;
+  overflow-x: auto; /* o overflow do eixo x cria automaticamente a rolagem de tela */
+}
+
 #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
@@ -81,6 +123,11 @@ table tbody tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
 table thead th {
   background: white;
   font-weight: normal;
@@ -88,14 +135,10 @@ table thead th {
   text-align: left;
 }
 
-/*table td {
-  background: white;
-  padding: 1rem 2rem;
-}*/
-
 table tbody tr {
   opacity: 0.7;
 }
+
 table tbody tr:hover {
   opacity: 1;
 }
@@ -119,4 +162,21 @@ footer {
   padding: 4rem 0 2rem;
   color: var(--dark-blue);
   opacity: 0.6;
+}
+
+/* Responsive ======================== */
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* fr = fração, podemos usar a função,
+     onde o pprimeiro agrumento é de quantas vezes a fração se repete*/
+    gap: 2rem;
+  }
 }
